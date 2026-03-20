@@ -1,6 +1,6 @@
 import { createApp, computed, reactive, nextTick } from 'vue';
-import { Examples } from '../text/examples.js'; 
-import { Tooltips } from '../text/tooltips.js'; 
+import { Examples } from '../text/examples.js';
+import { Tooltips } from '../text/tooltips.js';
 import { Importer } from './importer.js';
 import { Exporter } from './exporter.js';
 import { Template } from './template.js';
@@ -31,6 +31,7 @@ const app = createApp({
             locations: [{'id': 1, 'placement_type': 'none', 'region_options': []}], // locations.json
             regions: [{'id': 1}], // regions.json
             categories: {}, // categories.json
+            events: [], // events.json
 
             totalItemsByCount: 0,
             totalLocations: 0,

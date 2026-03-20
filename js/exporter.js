@@ -8,6 +8,7 @@ export class Exporter {
     locations = [];
     regions = [];
     categories = {};
+    events = [];
     status = '';
 
     static fromApp(vue) {
@@ -40,6 +41,7 @@ export class Exporter {
         this.locations = Exporter.prepLocations(this.vue.locations);
         this.regions = Exporter.prepRegions(this.vue.regions);
         this.categories = this.vue.categories;
+        this.events = this.vue.events;
 
         let template = self.vue.apworld_template;
         let gameFormatted = self.game.game.toLowerCase().replace(/[^A-Za-z0-9]/g, '');
@@ -47,7 +49,7 @@ export class Exporter {
         let folder_name = `manual_${gameFormatted}_${playerFormatted}`;
 
         let zip = new JSZip();
-        
+
         for (let filename in template.fileContents) {
             zip.folder(folder_name).file(filename, template.fileContents[filename]);
         }
@@ -57,7 +59,7 @@ export class Exporter {
         zip.folder(folder_name).file('data/locations.json', encodeJsonWithSpacing(this.locations));
         zip.folder(folder_name).file('data/regions.json', encodeJsonWithSpacing(this.regions));
         zip.folder(folder_name).file('data/categories.json', encodeJsonWithSpacing(this.categories));
-
+        zip.folder(folder_name).file('data/events.json', encodeJsonWithSpacing(this.events));
 
         zip.generateAsync({
             type:"blob",
@@ -93,7 +95,7 @@ export class Exporter {
             else {
                 item['category'] = [];
             }
-                        
+
             for (let delete_key of ['id', 'categories', 'classification', 'validation_error', 'progression', 'progression_skip_balancing', 'useful', 'filler', 'trap']) {
                 delete item[delete_key];
             }
@@ -118,7 +120,7 @@ export class Exporter {
             else {
                 location['category'] = [];
             }
-            
+
             location['requires'] = location['requirements'] || "";
 
             switch (location['placement_type']) {
@@ -165,7 +167,7 @@ export class Exporter {
             else {
                 region['connects_to'] = [];
             }
-            
+
             region['requires'] = region['requirements'] || "";
 
             for (let delete_key of ['id', 'validation_error', 'requirements', 'name']) {
