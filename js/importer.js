@@ -23,15 +23,16 @@ export class Importer {
         const basename = file.name.replace(/\.apworld/, '');
         const error_text = '<span style="color: red">{text}</span>';
 
-        JSZip.loadAsync(file, { createFolders: true })                                   
+        JSZip.loadAsync(file, { createFolders: true })
             .then(function(zip) {
-                
+
                 var selfref = reactive(self);
                 const file_game = zip.file(`${basename}/data/game.json`);
                 const file_items = zip.file(`${basename}/data/items.json`);
                 const file_locations = zip.file(`${basename}/data/locations.json`);
                 const file_regions = zip.file(`${basename}/data/regions.json`);
                 const file_categories = zip.file(`${basename}/data/categories.json`);
+                const file_events = zip.file(`${basename}/data/events.json`);
 
                 if (!file_game && !file_items && !file_locations && !file_regions) {
                     selfref.status = error_text.replace(
@@ -125,6 +126,16 @@ export class Importer {
                             console.log('Categories file not provided. Skipping');
                         });
                 }
+
+                if (file_events) {
+                    file_events.async('string')
+                        .then((content) => {
+                            selfref.events = self.parseJSON(content);
+                        })
+                        .catch((err) => {
+                            console.log('Events file not provided. Skipping');
+                        });
+                }
             }, function (e) {
                 var selfref = reactive(self);
                 selfref.status = `${file.name} failed because: ${e.message}`;
@@ -147,6 +158,7 @@ export class Importer {
         this.fillLocations();
         this.fillRegions();
         this.fillCategories();
+        this.fillEvents();
 
         this.status = `<strong>Loaded!</strong>`;
     }
@@ -275,6 +287,10 @@ export class Importer {
 
     fillCategories() {
         this.vue.categories = this.categories; // we can do better in the future
+    }
+
+    fillEvents() {
+        this.vue.events = this.events;
     }
 
     parseJSON(json_text) {
