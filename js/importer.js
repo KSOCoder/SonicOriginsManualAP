@@ -9,6 +9,7 @@ export class Importer {
     locations = [];
     regions = [];
     categories = {};
+    events = [];
     status = '';
 
     static fromZip(file, app) {
