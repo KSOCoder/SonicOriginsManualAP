@@ -105,7 +105,10 @@ export class Exporter {
             after_items.push(item);
         }
 
-        return after_items;
+        return {
+            "$schema": "https://github.com/ManualForArchipelago/Manual/raw/main/schemas/Manual.items.schema.json",
+            "data": after_items
+        };
     }
 
     static prepLocations(before_locations) {
@@ -151,11 +154,16 @@ export class Exporter {
             after_locations.push(location);
         }
 
-        return after_locations;
+        return {
+            "$schema": "https://github.com/ManualForArchipelago/Manual/raw/main/schemas/Manual.locations.schema.json",
+            "data": after_locations
+        };
     }
 
     static prepRegions(before_regions) {
-        let after_regions = {};
+        let after_regions = {
+            "$schema": "https://github.com/ManualForArchipelago/Manual/raw/main/schemas/Manual.regions.schema.json"
+        };
 
         for (let before_region of [...before_regions]) {
             let region = Object.assign({}, before_region);
