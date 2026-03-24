@@ -173,7 +173,7 @@ export class Importer {
         else {
             this.vue.creator = this.game.player;
         }
-        
+
         this.vue.filler = this.game.filler_item_name;
         this.vue.starting_items = this.game.starting_items || [];
     }
@@ -204,7 +204,10 @@ export class Importer {
                 item.classification = 'useful';
             }
 
-            item.categories = item.category?.join(', ') || '';
+            if (typeof item.category === 'string')
+                item.category = item.category
+            else
+                item.categories = item.category?.join(', ') || '';
 
             if (!item.count) {
                 item.count = 1;
@@ -231,7 +234,10 @@ export class Importer {
         for (let location of this.locations) {
             location.requirements = getRequirementsFromJSON(location.requires);
 
-            location.categories = location.category?.join(', ') || '';
+            if (typeof location.category === 'string')
+                location.category = location.category
+            else
+                location.categories = location.category?.join(', ') || '';
 
             if (location.place_item) {
                 location.placement_type = 'single_item';
