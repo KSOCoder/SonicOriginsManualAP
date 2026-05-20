@@ -205,7 +205,7 @@ export class Importer {
             }
 
             if (typeof item.category === 'string')
-                item.category = item.category
+                item.categories = item.category
             else
                 item.categories = item.category?.join(', ') || '';
 
@@ -235,7 +235,7 @@ export class Importer {
             location.requirements = getRequirementsFromJSON(location.requires);
 
             if (typeof location.category === 'string')
-                location.category = location.category
+                location.categories = location.category
             else
                 location.categories = location.category?.join(', ') || '';
 
