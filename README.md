@@ -1,5 +1,11 @@
 Manual AP for Sonic Origins, inspired by the AP for Sonic The Hedgehog (Gen) made by Kaithar.
 
+**Requirements**
+- Sonic Origins Game
+- All characters unlocked
+- All missions unlocked
+- Time Trial Mode completed on CD
+
 **What's randomized?**
 - The 4 games
 - The 4 playable characters (respective to games)
