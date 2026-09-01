@@ -1,13 +1,37 @@
-# ManualBuilder
+Manual AP for Sonic Origins, inspired by the AP for Sonic The Hedgehog (Gen) made by Kaithar.
 
-**Disclaimer:** Manual is a fan project for use with the Archipelago multiworld project. Manual is not affiliated with or endorsed by the Archipelago project in any way.
+**What's randomized?**
+- The 4 games
+- The 4 playable characters (respective to games)
+- The 7 chaos emeralds
+- The 7 time stones
+- The 7 super emeralds
+- Keys to the special stages (respective to games)
+- Mission Mode Unlock (respective to games)
+- Character Movement
+- CD's Past and Future time travel
 
-To use the Manual Builder tool, go to: https://manualforarchipelago.github.io/ManualBuilder/
+**Optional settings**
+- Monitorsanity
+- Playable Games
+- Playable Characters
 
-## Contributing
+**What are checks?**
+- Beating a level
+- Beating a boss (boss is separate from end of level)
+- Mission clear
+- Special stage rewards (chaos emerald, time stone, super emerald)
+- Metal Sonic hologram (CD)
+- Freeing the critters (CD)
+- Monitors (Monitorsanity)
 
-We welcome any and all contributions! First, start by forking the repo and downloading the files for your fork.
+**How to goal?**
+There are multiple ways to goal!
+- Fast: Beat all playable games
+- Fast Team: Beat all playable games as all playable characters
+- Super: Beat all playable games with good ending *note: cd requires time stones; 3&K requires super emeralds
+- Gem Hunt: Collect all emeralds and stones for playable games
+- Missions: Beat all missions for playable games
+- Macguffin hunt: Collect required % of rings to win
 
-Then you'll want to install a way to see your changes locally for testing them out. Since the site is fully JavaScript, any basic hosting method will work. In my current workflow, I use the "Live Server" extension in VSCode (https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) to quickly host the project locally for testing.
-
-Once you've tested out your changes, make a PR and tell us what's changing and why! We'll give it a review and, if it passes review, your changes will be in! (If you're uncertain about whether we'd want certain changes, make an Issue instead! We can answer that there.)
+I plan to eventually try implementing direct interactions between archipelago and the game for those wanting to support that.
